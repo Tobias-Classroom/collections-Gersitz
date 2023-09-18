@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Collections
@@ -8,35 +9,83 @@ namespace Collections
   {
     public static List<int> AddRandomNumbersToList(List<int> numbers, int quantity)
     {
-      // your code here...
-
+      for (int i = 0; i < quantity; i++)
+      {
+        Random rng = new Random();
+        numbers.Add(rng.Next());
+      }
+      return numbers;
     }
 
     public static (List<int>, string) RemoveElementFromList(List<int> numbers, int element)
     {
-      // your code here...
+      string message = "";
+      if (numbers.Contains(element))
+      {
+        numbers.Remove(element);
+        message = $"{element} wurde entfernt.";
+      }
+      else
+      {
+        message = "Element nicht gefunden.";
+      }
+      return (numbers, message);
 
     }
 
     public static bool CheckElementInList(List<int> numbers, int element)
     {
-      // your code here...
-
+      return numbers.Contains(element);
     }
 
     public static int FindMax(List<int> numbers)
     {
-      // your code here...
+      int max = 0;
+      if (numbers.Count == 0)
+      {
+        return 0;
+      }
+      else
+      {
+        foreach (int num in numbers)
+        {
+          if (num > max)
+          {
+            max = num;
+          }
+        }
+        return max;
+      }
 
     }
     public static int FindMin(List<int> numbers)
     {
-      // your code here...
-
+      int min = 0;
+      if (numbers.Count == 0)
+      {
+        return 0;
+      }
+      else
+      {
+        foreach (int num in numbers)
+        {
+          if (num < min)
+          {
+            min = num;
+          }
+        }
+        return min;
+      }
     }
+
     public static double CalculateAverage(List<int> numbers)
     {
-      // your code here...
+      double sum = 0;
+      foreach (double num in numbers)
+      {
+        sum += num;
+      }
+      return sum/numbers.Count();
     }
 
   }
